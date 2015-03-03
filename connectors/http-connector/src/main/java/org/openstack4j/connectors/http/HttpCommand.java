@@ -69,11 +69,12 @@ public final class HttpCommand<R> {
      */
     public HttpResponse execute() throws Exception {
         StringBuilder requestBody = new StringBuilder();
-        if (request.getEntity() != null) {
-            String content = ObjectMapperSingleton.getContext(request.getEntity().getClass()).writer().writeValueAsString(request.getEntity());
-            requestBody.append(content);
+      //  if (request.getEntity() != null) {
+          
+            //requestBody.append(content);
 
-        } else if (request.hasJson()) {
+        if (request.hasJson()) {
+              String content= ObjectMapperSingleton.getContext(request.getEntity().getClass()).writer().writeValueAsString(request.getEntity());
             requestBody.append(request.getJson());
         }
 
